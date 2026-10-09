@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoTech Penang WebApp</title>
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Splash Screen Styling */
+    #splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: #198754; /* Bootstrap green */
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 9999;
+      font-family: Arial, sans-serif;
+    }
+    #splash h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    #splash p {
+      font-size: 1.2rem;
+    }
+    #splash.fade-out {
+      opacity: 0;
+      transition: opacity 1s ease-out;
+      pointer-events: none;
+    }
+    /* Hero Section Styling */
+   #home {
+  	background-image: url("bg.jpg");
+  	background-size: cover;
+	background-position: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+    #home::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 0;
+    }
+    #home .container {
+      position: relative;
+      z-index: 1;
+    }
+    #home h1, #home p {
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Splash Screen -->
+<div id="splash">
+  <h1>EcoTech Penang</h1>
+  <p>Loading your green experience...</p>
+</div>
+// Splash screen fade-out when button clicked
+document.getElementById("enterBtn").addEventListener("click", () => {
+  const splash = document.getElementById("splash");
+  splash.classList.add("fade-out");
+  setTimeout(() => {
+    splash.style.display = "none";
+  }, 1000); // hide after fade
+});
+</div>
+
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#home">EcoTech Penang</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#categories">E-Waste Categories</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pickup">Schedule Pickup</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HOME SECTION -->
+<section id="home">
+  <div class="container">
+    <h1>Welcome to EcoTech Penang</h1>
+    <p>We help Penang residents safely dispose of e-waste and earn Green Rewards.</p>
+    <a href="#categories" class="btn btn-success mt-3">View Categories</a>
+  </div>
+</section>
+
+<!-- Example other sections -->
+<section id="categories" class="py-5 bg-light">
+  <div class="container">
+       <!-- content here -->
+  </div>
+</section>
+
+<!-- CATEGORIES SECTION -->
+<section id="categories" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-4">Accepted E-Waste Items</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <img src="ip.jpg" class="card-img-top" alt="Smartphone">
+          <div class="card-body">
+            <h5 class="card-title">Smartphones</h5>
+            <p class="card-text">Dispose old phones safely. Earn 10 Green Points.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="lap.jpg" class="card-img-top" alt="Laptop">
+          <div class="card-body">
+            <h5 class="card-title">Laptops</h5>
+            <p class="card-text">Recycle laptops responsibly. Earn 20 Green Points.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="b.jpg" class="card-img-top" alt="Battery">
+          <div class="card-body">
+            <h5 class="card-title">Batteries</h5>
+            <p class="card-text">Dispose batteries safely. Earn 5 Green Points.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PICKUP SECTION -->
+<section id="pickup" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Book Your E-Waste Pickup</h2>
+    <form id="pickupForm" class="mb-4">
+      <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Item</label>
+        <select class="form-select" required>
+          <option>Smartphone</option>
+          <option>Laptop</option>
+          <option>Battery</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Pickup Date</label>
+        <input type="date" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-success">Submit Booking</button>
+    </form>
+
+    <!-- Contact Buttons -->
+    <div class="text-center">
+      <a href="tel:+60123456789" class="btn btn-outline-success">Call Us</a>
+      <a href="mailto:info@ecotechpenang.com" class="btn btn-outline-primary">Email Us</a>
+    </div>
+
+   <!-- Google Map -->
+<div class="mt-4">
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121169.45418324135!2d100.13458469726561!3d5.298702200000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304ac162ea8a79ef%3A0x2fca8b679ab1d276!2sEcotech%20Technology%20Sdn%20Bhd!5e1!3m2!1sen!2smy!4v1790606307859!5m2!1sen!2smy" 
+    width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+  </iframe>
+</div>
+</section>
+
+<section id="pickup" class="py-5">
+  <div class="container">
+    <!-- form here -->
+  </div>
+</section>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Fade-in effect for sections
+  const sections = document.querySelectorAll("section");
+  window.addEventListener("scroll", () => {
+    sections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        sec.classList.add("visible");
+      }
+    });
+  });
+
+  // Splash screen fade-out
+  window.addEventListener("load", () => {
+    const splash = document.getElementById("splash");
+    setTimeout(() => {
+      splash.classList.add("fade-out");
+    }, 1500); // fade after 1.5s
+    setTimeout(() => {
+      splash.style.display = "none";
+    }, 2500); // hide after 2.5s
+  });
+ // ✅ Booking form success message
+  document.getElementById("pickupForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // stop reload
+    alert("🎉 Congrats! You already submitted the booking.");
+  });
+</script>
+
+<!-- Footer -->
+<footer class="bg-success text-white text-center p-3">
+  &copy; 2026 EcoTech Penang. All rights reserved.
+</footer>
+
+</body>
+</html>
